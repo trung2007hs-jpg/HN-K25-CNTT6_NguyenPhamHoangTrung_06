@@ -6,13 +6,14 @@ int main () {
 	int cont;
 	int key;
 	int choice, sorted;
-	while(cont == 'Y' && cont == 'X') {
+	int left = 0, right = n - 1;
+    do {
 		printf("\n==========MENU==========\n");
 		printf("1.Nhap so luong phan tu va gia tri mang\n");
 		printf("2.In mang\n");
 		printf("3.In phan tu chan trong mang\n");
 		printf("4.In ra gia tri lon nhat cua phan tu trong mang\n");
-		printf("5.Them moi phan tu v‡o vi tri cu the\n");
+		printf("5.Them moi phan tu v√†o vi tri cu the\n");
 		printf("6.Xoa phan tu tai vi tri cu the\n");
 		printf("7.Sap xep mang theo thu tu giam dan\n");
 		printf("8.Kiem tra su ton tai cua phan tu trong mang\n");
@@ -21,7 +22,6 @@ int main () {
 		printf("11.Thoat\n");
 		printf("Nhap lua chon: ");
 		scanf("%d", &choice);
-	}
 	switch (choice) {
 		case 1:
 			printf("Nhap so phan tu n: ");
@@ -42,9 +42,9 @@ int main () {
 			if(n == 0) {
 			    printf("Mang rong");
 			}
-			printf("Mang hien tai la: ");
-			for(int i = 0; i < n; i++) {
-				printf("arr[%d]= ", i);
+            printf("\nCac phan tu trong mang la:\n");
+            for(int i = 0; i < n; i++) {
+                printf("%d ", arr[i]);
 			}
 			break;
 		case 3:
@@ -70,10 +70,11 @@ int main () {
 					j--;
 				}
 				arr[j + 1] = key;
+				printf("Da sap xep\n");
 			}
+			break;
 		case 8:
-			int left = 0; right = n - 1;
-			wwhile(left <= right) {
+			while(left <= right) {
 				int mid = (left + right)/ 2;
 				if(arr[mid] < left) {
 					left = mid + 1;
@@ -83,16 +84,12 @@ int main () {
 			}
 		case 9:
 		case 10:
-		case 11:
-			printf("Cam on vi da den!");
+		case 0:
+			printf("Cam on vi da den!\n");
 			break;
-	}
-	printf("ban co muon tiep tuc");
-	scanf("%c", &choice);
-	if(cont != 'X' && cont != 'Y') {
-		printf("lua chon khong hop le");
-	} else {
-	    printf("tiep tuc");
-	}
+		default:
+			printf("Lua chon khong hop le\n");
+		}
+	} while(choice != 0);
+	return 0;	
 }
-
